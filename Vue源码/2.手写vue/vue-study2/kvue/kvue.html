@@ -1,0 +1,25 @@
+<!-- 数据响应式 -->
+<div id="app">
+    <!-- 插值 -->
+    <p> {{counter}}</p>
+    <!-- 指令 -->
+    <p k-text=”counter“></p>
+    <!-- 解析html -->
+    <p k-html=“desc”></p>
+</div>
+<script>
+    // 1.数据驱动；响应式数据
+    // 2.编译：得到渲染函数
+    const app = new KVue({
+        el:'#app',
+        data:{
+            counter:1,
+            desc:'  <span style="color: aquamarine;">pipipipipi</span>'
+        }
+    })
+    setInterval(()=>{
+        //为什么app能操作data中的数据呢
+        //用到了代理 实际上是app.$data.counter++
+        app.counter++
+    },1000)
+</script>
